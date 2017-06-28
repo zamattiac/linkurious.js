@@ -9,12 +9,12 @@
   // the euclidian
   var defaultPathLengthFunction = function(node1, node2, previousPathLength) {
     var isEverythingDefined =
-      node1 != undefined &&
-      node2 != undefined &&
-      node1.x != undefined &&
-      node1.y != undefined &&
-      node2.x != undefined &&
-      node2.y != undefined;
+      node1 !== undefined &&
+      node2 !== undefined &&
+      node1.x !== undefined &&
+      node1.y !== undefined &&
+      node2.x !== undefined &&
+      node2.y !== undefined;
     if(!isEverythingDefined) {
       return undefined;
     }
@@ -59,7 +59,7 @@
           previousNode: previousNode
         };
 
-        if(closedList[nodeId] == undefined || closedList[nodeId].pathLenth > pathLength) {
+        if(closedList[nodeId] === undefined || closedList[nodeId].pathLength > pathLength) {
           closedList[nodeId] = newItem;
 
           var item;
@@ -100,16 +100,17 @@
         inspectedItem = openList.shift();
 
         // We reached the destination node
-        if(inspectedItem.nodeId == destId) {
+        if(inspectedItem.nodeId === destId) {
           pathFound = true;
           break;
         }
 
-        neighbors = Object.keys(allNeighbors[inspectedItem.nodeId]);
+        neighbors = allNeighbors.get(inspectedItem.nodeId).keyList();
         for(i = 0; i < neighbors.length; i++) {
           neighbor = this.nodes(neighbors[i]);
           pathLength = pathLengthFunction(inspectedItem.node, neighbor, inspectedItem.pathLength);
           heuristicLength = heuristicLengthFunction(neighbor, destNode, pathLength);
+          // takes node object
           addToLists(neighbor, inspectedItem.node, pathLength, heuristicLength);
         }
       }
