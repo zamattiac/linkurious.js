@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf xmlns="http://www.gexf.net/1.3" version="1.3" xmlns:viz="http://www.gexf.net/1.3/viz" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.3 http://www.gexf.net/1.3/gexf.xsd">
+  <meta lastmodifieddate="2017-06-23">
+    <creator>Gephi 0.9</creator>
+    <description></description>
+  </meta>
+  <graph defaultedgetype="undirected" mode="static">
+    <nodes>
+      <node id="Matt" label="Matt">
+      </node>
+      <node id="Kristi" label="Kristi">
+      </node>
+      <node id="Barack" label="Barack">
+      </node>
+      <node id="Luke" label="Luke">
+      </node>
+      <node id="Dennis" label="Dennis">
+      </node>
+      <node id="Shore" label="Shore">
+      </node>
+      <node id="John" label="John">
+      </node>
+      <node id="Ryan" label="Ryan">
+      </node>
+      <node id="Alex" label="Alex">
+      </node>
+      <node id="Tyler" label="Tyler">
+      </node>
+      <node id="Artemis" label="Artemis">
+      </node>
+      <node id="Cristin" label="Cristin">
+      </node>
+    </nodes>
+    <edges>
+      <edge id="0" source="Matt" target="Kristi"></edge>
+      <edge id="1" source="Matt" target="Barack"></edge>
+      <edge id="2" source="Kristi" target="Luke"></edge>
+      <edge id="3" source="Luke" target="Dennis"></edge>
+      <edge id="4" source="Luke" target="Shore"/>
+      <edge id="5" source="Luke" target="John"></edge>
+      <edge id="6" source="Luke" target="Ryan"/>
+      <edge id="7" source="Ryan" target="Alex"/>
+      <edge id="8" source="Ryan" target="Tyler"></edge>
+      <edge id="9" source="Alex" target="Tyler"></edge>
+      <edge id="10" source="Shore" target="Artemis"/>
+      <edge id="11" source="Matt" target="Artemis"></edge>
+      <edge id="12" source="Kristi" target="Cristin"></edge>
+      <edge id="13" source="Luke" target="Cristin"></edge>
+      <edge id="14" source="Matt" target="Cristin"></edge>
+    </edges>
+  </graph>
+</gexf>
