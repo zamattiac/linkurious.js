@@ -1,0 +1,143 @@
+{
+  "nodes": [
+    {
+      "birthday": "July 23 (soon!)",
+      "id": "Matt",
+      "name": "Keitelman, Matthew",
+      "label": "Matt"
+    },
+    {
+      "id": "Kristi",
+      "name": "Stewart, Kristi",
+      "label": "Kristi"
+    },
+    {
+      "id": "Barack",
+      "name": "Obama, Barack",
+      "label": "Barack"
+    },
+    {
+      "id": "Luke",
+      "name": "Perry, Lukas",
+      "label": "Luke"
+    },
+    {
+      "id": "Rebecca",
+      "name": "Hannah, Rebecca",
+      "label": "Rebecca"
+    },
+    {
+      "id": "Dennis",
+      "name": "Reynolds, Dennis",
+      "label": "Dennis"
+    },
+    {
+      "id": "John",
+      "name": "Hancock, John",
+      "label": "John"
+    },
+    {
+      "id": "Ryan",
+      "name": "Gosling, Ryan",
+      "label": "Ryan"
+    },
+    {
+      "id": "Alex",
+      "name": "Vause, Alex",
+      "label": "Alex"
+    },
+    {
+      "id": "Tyler",
+      "name": "Tyler the Creator",
+      "label": "Tyler"
+    },
+    {
+      "id": "Artemis",
+      "name": "Fowl, Artemis",
+      "label": "Artemis"
+    },
+    {
+      "id": "Cristin",
+      "name": "Stewart, Cristin",
+      "label": "Cristin"
+    }
+  ],
+  "edges": [
+    {
+      "source": "Matt",
+      "target": "Kristi",
+      "id": "MattKristi",
+      "label": "LinkedIn"
+    },
+    {
+      "source": "Matt",
+      "id": "MattBarack",
+      "target": "Barack"
+    },
+    {
+      "source": "Kristi",
+      "id": "KristiLuke",
+      "target": "Luke"
+    },
+    {
+      "source": "Luke",
+      "id": "LukeDennis",
+      "target": "Dennis"
+    },
+    {
+      "source": "Luke",
+      "id": "LukeRebecca",
+      "target": "Rebecca"
+    },
+    {
+      "source": "Luke",
+      "id": "LukeJohn",
+      "target": "John"
+    },
+    {
+      "source": "Luke",
+      "id": "LukeRyan",
+      "target": "Ryan"
+    },
+    {
+      "source": "Ryan",
+      "id": "RyanAlex",
+      "target": "Alex"
+    },
+    {
+      "source": "Ryan",
+      "id": "RyanTyler",
+      "target": "Tyler"
+    },
+    {
+      "source": "Alex",
+      "id": "AlexTyler",
+      "target": "Tyler"
+    },
+    {
+      "source": "Rebecca",
+      "id": "RebeccaArtemis",
+      "target": "Artemis"
+    },
+    {
+      "source": "Matt",
+      "id": "MattArtemis",
+      "target": "Artemis"
+    },
+    {
+      "source": "Kristi",
+      "id": "KristiCristin",
+      "target": "Cristin"
+    },
+    {
+      "source": "Luke",
+      "id": "LukeCristin",
+      "target": "Cristin"
+    },
+    {
+      "source": "Matt",
+      "id": "MattCristin",
+      "target": "Cristin"
+    }
+  ]
+}

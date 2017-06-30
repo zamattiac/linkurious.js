@@ -1,0 +1,196 @@
+{
+  "nodes": [
+    {
+      "id": "Red",
+      "label": "Red",
+      "name": "Galina",
+      "birthday": "July 23 (soon!)"
+    },
+    {
+      "id": "Piper",
+      "label": "Piper",
+      "name": "Piper Chapman"
+    },
+    {
+      "id": "Gloria",
+      "label": "Gloria",
+      "name": "Gloria Mendoza"
+    },
+    {
+      "id": "Tasha",
+      "label": "Tasha",
+      "name": "Tasha Jefferson"
+    },
+    {
+      "id": "Suzanne",
+      "label": "Suzanne",
+      "name": "Suzanne Warren"
+    },
+    {
+      "id": "Daya",
+      "label": "Daya",
+      "name": "Dayaneira Diaz"
+    },
+    {
+      "id": "Soso",
+      "label": "Soso",
+      "name": "Brooke Soso"
+    },
+    {
+      "id": "Caputo",
+      "label": "Caputo",
+      "name": "Joe Caputo"
+    },
+    {
+      "id": "Alex",
+      "label": "Alex",
+      "name": "Alex Vause"
+    },
+    {
+      "id": "Aleida",
+      "label": "Aleida",
+      "name": "Aleida Diaz"
+    },
+    {
+      "id": "Cindy",
+      "label": "Cindy",
+      "name": "Cindy"
+    },
+    {
+      "id": "Nicky",
+      "label": "Nicky",
+      "name": "Nicole"
+    },
+    {
+      "id": "Blanca",
+      "label": "Blanca",
+      "name": "Flores"
+    }
+  ],
+  "edges": [
+    {
+      "id": "RedPiper",
+      "source": "Red",
+      "target": "Piper"
+    },
+    {
+      "id": "RedGloria",
+      "source": "Red",
+      "target": "Gloria"
+    },
+    {
+      "id": "RedTasha",
+      "source": "Red",
+      "target": "Tasha"
+    },
+    {
+      "id": "RedCaputo",
+      "source": "Red",
+      "target": "Caputo"
+    },
+    {
+      "id": "RedAlex",
+      "source": "Red",
+      "target": "Alex"
+    },
+    {
+      "id": "RedNicky",
+      "source": "Red",
+      "target": "Nicky"
+    },
+    {
+      "id": "GloriaTasha",
+      "source": "Gloria",
+      "target": "Tasha"
+    },
+    {
+      "id": "GloriaDaya",
+      "source": "Gloria",
+      "target": "Daya"
+    },
+    {
+      "id": "GloriaCaputo",
+      "source": "Gloria",
+      "target": "Caputo"
+    },
+    {
+      "id": "GloriaAleida",
+      "source": "Gloria",
+      "target": "Aleida"
+    },
+    {
+      "id": "GloriaBlanca",
+      "source": "Gloria",
+      "target": "Blanca"
+    },
+    {
+      "id": "TashaSuzanne",
+      "source": "Tasha",
+      "target": "Suzanne"
+    },
+    {
+      "id": "TashaCaputo",
+      "source": "Tasha",
+      "target": "Caputo"
+    },
+    {
+      "id": "TashaCindy",
+      "source": "Tasha",
+      "target": "Cindy"
+    },
+    {
+      "id": "TashaSoso",
+      "source": "Tasha",
+      "target": "Soso"
+    },
+    {
+      "id": "CindySuzanne",
+      "source": "Cindy",
+      "target": "Suzanne"
+    },
+    {
+      "id": "NickyAlex",
+      "source": "Nicky",
+      "target": "Alex"
+    },
+    {
+      "id": "NickyPiper",
+      "source": "Nicky",
+      "target": "Piper"
+    },
+    {
+      "id": "PiperAlex",
+      "source": "Piper",
+      "target": "Alex"
+    },
+    {
+      "id": "AleidaBlanca",
+      "source": "Aleida",
+      "target": "Blanca"
+    },
+    {
+      "id": "AleidaDaya",
+      "source": "Aleida",
+      "target": "Daya"
+    },    {
+      "id": "DayaBlanca",
+      "source": "Daya",
+      "target": "Blanca"
+    },
+    {
+      "id": "NickiSoso",
+      "source": "Nicky",
+      "target": "Soso"
+    },
+    {
+      "id": "RedBlanca",
+      "source": "Red",
+      "target": "Blanca"
+    },
+    {
+      "id": "PiperSuzanne",
+      "source": "Piper",
+      "target": "Suzanne"
+    }
+  ]
+}

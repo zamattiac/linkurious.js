@@ -46,44 +46,68 @@
 <script src="../src/misc/sigma.misc.bindDOMEvents.js"></script>
 <script src="../src/misc/sigma.misc.drawHovers.js"></script>
 <!-- END SIGMA IMPORTS -->
-<!--<script src="../plugins/sigma.plugins.design/sigma.plugins.design.js"></script>-->
-<script src="../plugins/sigma.layouts.forceAtlas2/worker.js"></script>
-<script src="../plugins/sigma.layouts.forceAtlas2/supervisor.js"></script>
-<script src="../plugins/sigma.parsers.gexf/gexf-parser.js"></script>
-<script src="../plugins/sigma.parsers.gexf/sigma.parsers.gexf.js"></script>
+<!-- EVENT ACTIONS -->
+<script src="actions.js"></script>
+<!-- BEGIN PLUGIN IMPORTS -->
+<!-- GEXF file parser -->
+<script src="../plugins/sigma.parsers.json/sigma.parsers.json.js"></script>
+<!-- Node dragging -->
 <script src="../plugins/sigma.plugins.dragNodes/sigma.plugins.dragNodes.js"></script>
+<!-- Edge labels -->
 <script src="../plugins/sigma.renderers.edgeLabels/settings.js"></script>
 <script src="../plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.def.js"></script>
+<!-- ForceAtlas2 layout -->
+<script src="../plugins/sigma.layouts.forceAtlas2/worker.js"></script>
+<script src="../plugins/sigma.layouts.forceAtlas2/supervisor.js"></script>
+<!-- Fruchterman-Reingold Layout -->
+<script src="../plugins/sigma.layouts.fruchtermanReingold/sigma.layout.fruchtermanReingold.js"></script>
+<script src="../plugins/sigma.plugins.animate/sigma.plugins.animate.js"></script>
+<!-- Path finding -->
 <script src="../plugins/sigma.pathfinding.astar/sigma.pathfinding.astar.js"></script>
-<!-- LOCAL FILES -->
 <script src="path.js"></script>
+<!-- Community detection -->
+<script src="../plugins/sigma.statistics.louvain/sigma.statistics.louvain.js"></script>
+<!-- Locate node-->
+<script src="../plugins/sigma.plugins.locate/sigma.plugins.locate.js"></script>
+<!-- JS LIBRARY IMPORTS-->
+<!-- Handlebars formatting-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<style>
+    #graph-container {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+    }
+</style>
 
 <div id="container">
-    <style>
-        #graph-container {
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            position: absolute;
-        }
-    </style>
     <div id="graph-container">
         <button id="force" type="button">ForceAtlas2</button>
+        <button id="frlayout" type="button">Fruchterman-Reingold</button>
         <button id="circle" type="button">Circle</button>
         <button id="zoomIn" type="button">+</button>
         <button id="zoomOut" type="button">-</button>
+        <button id="zoomToFit" type="button">Zoom To Fit</button>
         <button id="path" type="button">Find Path</button>
+        <button id="community" type="button">Communities</button>
         <button id="reset" type="button">Reset</button>
-        <!--<input type="file" id="file" name="file" action=loadFile(s,file)-->
+        <select id="locate">
+            <option value="all">No nodes to locate</option>
+        </select>
+        <input type="file" id="file" name="file">
         <p id="msg">Message box</p>
     </div>
 </div>
 <script>
     /**
-     * circlular layout function
-     * load file from gexf file
-     * sigma instantiation and settings
+     * Graph initialization (s)
+     * Listener declarations for dragging, locate, , and Fruchterman-Reingold layout
+     *
      */
     function circle(s) {
         s.graph.nodes().forEach(function (node, i, a) {
@@ -94,21 +118,40 @@
         })
     }
 
-    function loadFile(s, fname) {
-        sigma.parsers.gexf(
-            fname,
-            s,
-            function () {
-                s.graph.nodes().forEach(function (node, i, a) {
-                    node.size = 2;
-                });
-                s.refresh();
-                circle(s);
-            }
+    function zoomToFit() {
+        sigma.misc.animation.camera(
+            s.cameras[0],
+            {ratio: 1, x: 0, y: 0, angle: 0},
+            {duration: 500}
         );
     }
 
-    //    document.getElementById('file').addEventListener('change', function() {loadFile(s, this.value);});
+    function loadFile(s, fname) {
+        sigma.parsers.json(
+            fname,
+            s,
+            function () {
+                $('#locate').empty().append('<option value="all">Locate a node</option>');
+                var sorted = s.graph.nodes();
+                sorted.sort(function (a, b) {
+                    return a.name.localeCompare(b.name);
+                });
+                sorted.forEach(function (node, i, a) {
+                    node.size = 2;
+                    $('#locate').append(Mustache.render(
+                        '<option value="{{id}}">{{name}}</option>',
+                        {
+                            "id": node.id,
+                            "name": node.name
+                        }
+                    ));
+                });
+                s.refresh();
+                circle(s);
+                zoomToFit();
+            }
+        );
+    }
 
     s = new sigma({
         renderer: {
@@ -122,11 +165,18 @@
         }
     });
 
+    var c = s.camera;
+    var locate = sigma.plugins.locate(s);
     var dragListener = new sigma.plugins.dragNodes(s, s.renderers[0]);
+    var frListener = sigma.layouts.fruchtermanReingold.configure(s, {
+        iterations: 500,
+        easing: 'quadraticInOut',
+        duration: 800
+    });
 
-    loadFile(s, 'data/doubleedge.gexf');
+    loadFile(s, 'data/interns.json');
 
-    // on click events in events.js
+    // on click events in listeners.js
     // path finder in path.js
 </script>
-<script src="events.js"></script>
+<script src="listeners.js"></script>
