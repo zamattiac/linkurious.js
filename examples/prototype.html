@@ -87,27 +87,35 @@
 
 <div id="container">
     <div id="graph-container">
+        Layouts
         <button id="force" type="button">ForceAtlas2</button>
         <button id="frlayout" type="button">Fruchterman-Reingold</button>
         <button id="circle" type="button">Circle</button>
+        Zoom
         <button id="zoomIn" type="button">+</button>
         <button id="zoomOut" type="button">-</button>
         <button id="zoomToFit" type="button">Zoom To Fit</button>
+        Analysis
         <button id="path" type="button">Find Path</button>
         <button id="community" type="button">Communities</button>
         <button id="reset" type="button">Reset</button>
         <select id="locate">
             <option value="all">No nodes to locate</option>
         </select>
+        Load file
         <input type="file" id="file" name="file">
         <p id="msg">Message box</p>
     </div>
 </div>
 <script>
-    /**
+    /*
      * Graph initialization (s)
      * Listener declarations for dragging, locate, , and Fruchterman-Reingold layout
      *
+     */
+
+    /**
+     * Assigns a location in a circle from the file listing order
      */
     function circle(s) {
         s.graph.nodes().forEach(function (node, i, a) {
@@ -126,6 +134,13 @@
         );
     }
 
+    /**
+     * @param s - sigma instance
+     * @param fname - local file in data/ directory
+     *
+     * Assigns all nodes a size and location
+     * Adds all nodes to the locate drop down alphabetically
+     */
     function loadFile(s, fname) {
         sigma.parsers.json(
             fname,
@@ -177,6 +192,7 @@
     loadFile(s, 'data/interns.json');
 
     // on click events in listeners.js
+    // on click actions in actions.js
     // path finder in path.js
 </script>
 <script src="listeners.js"></script>

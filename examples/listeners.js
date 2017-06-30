@@ -1,5 +1,5 @@
 /**
- * Event handlers
+ * Event handlers for button clicks and selection
  */
 
 // Current node selected, path find source/target
@@ -31,27 +31,6 @@ var selected = null,
 ];
 
 s.bind('clickNode', select);
-
-/**
- * Zoom listeners (in/out/to fit)
- */
-$('#zoomIn').on("click", function () {
-    sigma.misc.animation.camera(c, {
-        ratio: c.ratio / c.settings('zoomingRatio')
-    }, {
-        duration: 100
-    });
-});
-
-$('#zoomOut').on("click", function () {
-    sigma.misc.animation.camera(c, {
-        ratio: c.ratio * c.settings('zoomingRatio')
-    }, {
-        duration: 100
-    });
-});
-
-$('#zoomToFit').click(zoomToFit);
 
 /**
  * ForceAtlas2 listener
@@ -88,6 +67,27 @@ $('#circle').on("click", function () {
 });
 
 /**
+ * Zoom listeners (in/out/to fit)
+ */
+$('#zoomIn').on("click", function () {
+    sigma.misc.animation.camera(c, {
+        ratio: c.ratio / c.settings('zoomingRatio')
+    }, {
+        duration: 100
+    });
+});
+
+$('#zoomOut').on("click", function () {
+    sigma.misc.animation.camera(c, {
+        ratio: c.ratio * c.settings('zoomingRatio')
+    }, {
+        duration: 100
+    });
+});
+
+$('#zoomToFit').click(zoomToFit);
+
+/**
  * Pathfind listener
  */
 // When choosing 'Find Path', this takes the first two node click events
@@ -97,16 +97,6 @@ $('#path').on("click", function () {
     s.bind('clickNode', selectPath);
 });
 
-
-/**
- * Reset listener
- */
-$('#reset').on("click", function () {
-    resetColor();
-    selected = target = source = null;
-    circle(s);
-    s.refresh();
-});
 
 /**
  * Community detect listener
@@ -123,6 +113,18 @@ $('#community').on("click", function () {
     s.refresh();
 });
 
+
+/**
+ * Reset listener
+ */
+$('#reset').on("click", function () {
+    resetColor();
+    zoomToFit();
+    selected = target = source = null;
+    circle(s);
+    s.refresh();
+});
+
 /**
  * Locate node listener
  */
@@ -133,6 +135,7 @@ $('#locate').change(function (e) {
     }
     else {
         locate.nodes(nid);
+        select({"data":{"node": s.graph.nodes(nid)}});
     }
 });
 
@@ -140,5 +143,7 @@ $('#locate').change(function (e) {
  * File upload listener
  */
 $('#file').change(function () {
+    resetColor();
+    selected = target = source = null;
     loadFile(s, 'data/' + this.files[0].name);
 });
